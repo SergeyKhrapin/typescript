@@ -1,5 +1,84 @@
 import React, { useState } from 'react'
 
+/* BASICS */
+
+// 1. Extending an interface
+
+interface User {
+    name: string
+}
+interface UserExt extends User {
+    age: number
+}
+const logUser = (user: UserExt) => console.log('user', user)
+logUser({name: 'Petro', age: 18})
+
+
+// 2. Extending a type alias
+
+type User2 = {
+    name: string
+}
+type User2Ext = User2 & {
+    age: number
+}
+const logUser2 = (user: User2Ext) => console.log('user', user)
+logUser2({name: 'Petro', age: 18})
+
+
+// 3. Adding a new field to interface
+
+interface User3 {
+    name: string
+}
+interface User3 {
+    age: number
+}
+const logUser3 = (user: User3) => console.log('user', user)
+logUser3({name: 'Petro', age: 18})
+
+
+// 4. Adding a new field to a type alias
+type User4 = {
+    name: string
+}
+// Error !
+// type User4 = {
+//     age: number
+// }
+
+
+// 5. enums
+enum Salary {
+    junior = 1,
+    middle,
+    senior,
+}
+console.log('junior', Salary.junior * 1000);
+console.log('middle', Salary.middle * 1000);
+console.log('senior', Salary.senior * 1000);
+
+// 6. literals
+
+let string: 'str' = 'str'
+// Error!
+// string = 'hey'
+
+function getUser(name, position: 'junior' | 'middle' | 'senior') {
+    return name + ', ' + position
+}
+getUser('Mykola', 'middle')
+
+// 7. anonymous functions
+const names = ["hi", "hey", "hello"]
+
+names.forEach(s => {
+    // Error!
+    // console.log(s.toUppercase())
+});
+
+
+
 /* GENERICS */
 
 // 1. Array
