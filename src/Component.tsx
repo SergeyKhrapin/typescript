@@ -64,7 +64,7 @@ let string: 'str' = 'str'
 // Error!
 // string = 'hey'
 
-function getUser(name, position: 'junior' | 'middle' | 'senior') {
+function getUser(name: string, position: 'junior' | 'middle' | 'senior') {
     return name + ', ' + position
 }
 getUser('Mykola', 'middle')
@@ -151,28 +151,23 @@ const user = makeFullName({
 
 // 5. generic + interface
 
-interface Tab<T> {
+interface Tab<T = string> {
     id: string
     position: number,
     data: T
 }
 
-type StringData = Tab<string>
-type NumberData = Tab<number>
-
-const tab1: StringData  = {
+const tab1: Tab  = {
     id: '1320',
     position: 3,
     data: 'vsd'
 }
 
-const tab2: NumberData  = {
+const tab2: Tab<number> = {
     id: '1320',
     position: 3,
     data: 5
 }
-
-console.log(tab1, tab2)
 
 
 // 6. props
