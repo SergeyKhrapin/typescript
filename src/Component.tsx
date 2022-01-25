@@ -108,12 +108,21 @@ const getLastElement = <T,>(arr: T[]) => {
     return arr[arr.length - 1]
 }
 
-const last1 = getLastElement([1, 2, 3])
-const last2 = getLastElement(['a', 'b', 'c'])
-const last3 = getLastElement([1, 2, 'c'])
-const last4 = getLastElement<string | number>([1, 2, 'c']) // we can explicitly specify the type
+getLastElement([1, 2, 3])
+getLastElement(['a', 'b', 'c'])
+getLastElement([1, 2, 'c'])
+getLastElement<string | number>([1, 2, 'c']) // we can explicitly specify the type
 
-console.log(last1, last2, last3, last4)
+interface Length {
+    length: number
+}
+
+function getLength<T extends Length>(arg: T) {
+    return arg.length
+}
+
+getLength([])
+getLength({ length: 7, age: 30 })
 
 
 // 3. two generics, return type, overwrite inference, default value
